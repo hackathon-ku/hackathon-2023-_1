@@ -1,0 +1,21 @@
+[{
+  "_id": {
+    "$oid": "655e26114e8635fd7bc1f95b"
+  },
+  "id": "6510503409",
+  "name": "ธนภรณ์ กิจวรเกียรติ",
+  "Faculty": "Computer Engineer",
+  "activity": {
+    "activity1": {
+      "activity_1": 2
+    },
+    "activity2": {
+      "activity_1": 3,
+      "activity_2": 4
+    },
+    "activity3": {
+      "activity_1": 2,
+      "activity_2": 3
+    }
+  }
+}]
