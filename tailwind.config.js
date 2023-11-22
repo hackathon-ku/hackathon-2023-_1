@@ -9,6 +9,9 @@ export default {
         primary: "#006c53",
         secondary: "#ddf0c7",
       },
+	  fontFamily:{
+		'kanit': ['Kanit', 'sans-serif'],
+	  },
     },
     screens: {
       'sm': {'min': '300px', 'max': '767px'},
