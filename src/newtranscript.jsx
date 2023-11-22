@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import checkMark from './picture/image.png'
 
 
 const Activity = ({ Title, required, activityList }) => {
@@ -69,6 +70,7 @@ function newtranscript() {
 	const [studentNumber, setStudentNumber] = useState("6510503409")
 	const [name, setname] = useState("ธนภรณ์ กิจวรเกียรติ")
 	const [faculty, setfaculty] = useState("วิศวกรรมคอมพิวเตอร์")
+	const [check, setcheck] = useState("")
 	const [activityList1,setActivityList1] = useState({
 		'Pround to be KU':4,
 		'โครงการปฐมนิเทศนิสิตใหม่':4
@@ -83,19 +85,26 @@ function newtranscript() {
 	})
 
 	return (
-		<div>
-
-			<div className="p-5 min-h-screen m-auto flex flex-col w-1/2 sm:w-full">
-				<h1 className='text-[#38804e] text-center  text-2xl p-5'>Activity Transcript</h1>
-				<Info studentNumber={studentNumber} name={name} faculty={faculty}/>
-				<Activity Title='กิจกรรมมหาวิทยาลัย' required={3} activityList={activityList1}/>
-				<Activity Title='กิจกรรมเพื่อเสริมสร้างสมรรถนะ' required={4} activityList={activityList2}/>
-				<Activity Title='กิจกรรมเพื่อสังคม' required={1} activityList={activityList3}/>
-				<div className='text-center mt-auto mb-auto'>
-					<button className='bg-[#6acb87] text-white text-center text-xl rounded-lg pt-1 pb-1 w-1/2'>กลับ</button>
-				</div>
-			</div>
-		</div>
+	<div className="flex justify-space-around">
+	<div className="bg-white w-1/3 min-h-screen flex items-center justify-center border sm:hidden">
+	  <img 
+		src= { checkMark }
+		alt="Your Alt Text"
+		className="max-w-40 max-h-40 "
+	  />
+	</div>
+	<div className="p-5 min-h-screen m-auto flex flex-col w-2/3 sm:w-full">
+	  <h1 className='text-[#38804e] text-center  text-2xl p-5'>Activity Transcript</h1>
+	  <Info studentNumber={studentNumber} name={name} faculty={faculty}/>
+	  <Activity Title='กิจกรรมมหาวิทยาลัย' required={3} activityList={activityList1}/>
+	  <Activity Title='กิจกรรมเพื่อเสริมสร้างสมรรถนะ' required={4} activityList={activityList2}/>
+	  <Activity Title='กิจกรรมเพื่อสังคม' required={1} activityList={activityList3}/>
+	  <div className='text-center mt-auto mb-auto'>
+		<button className='bg-[#6acb87] text-white text-center text-xl rounded-lg pt-1 pb-1 w-1/2'>กลับ</button>
+	  </div>
+	</div>
+  </div>
+  
 	)
 }
 
