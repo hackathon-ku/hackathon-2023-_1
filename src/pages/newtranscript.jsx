@@ -2,6 +2,24 @@ import React, { useState,useEffect } from 'react'
 import checkMark from '../picture/image.png'
 
 
+const Result = ({ a, b ,c}) => {
+	const counta = Object.keys(a).length;
+	const countb = Object.keys(b).length;
+	const countc = Object.keys(c).length;
+	let pass = (counta > 3 && countb > 4 && countc > 1)? true : false;
+	return(
+		<div className='p-2'>
+			<div className={pass ? 'bg-[#2ec28c] flex justify-between rounded-t-lg' : 'bg-[#f188a2] flex justify-between rounded-t-lg'}>
+				<h4 className='pl-2 text-white'>Transcript กิจกรรมนิสิต</h4>
+			</div>
+			<div className={pass ? 'p-30 bg-[#2bb482] bg-opacity-20 text-[#2bb482] text-center text-4xl' :'p-5 bg-[#f188A2] bg-opacity-20 text-[#f188A2] text-center text-4xl'} >
+				{ pass ? <p>PASS</p> : <p>NOT PASS</p>}
+			</div>
+		</div>
+
+	)
+}
+
 const Activity = ({ Title, required, activityList }) => {
 
 	const count = Object.keys(activityList).length;
@@ -106,6 +124,7 @@ function newtranscript() {
 		<div className="p-5 min-h-screen m-auto flex flex-col w-2/3 sm:w-full">
 			<h1 className='text-[#38804e] text-center  text-2xl p-5'>Activity Transcript</h1>
 			<Info studentNumber={studentNumber} name={name} faculty={faculty}/>
+			<Result a = {activityList1} b = {activityList2} c = {activityList3}/>
 			<Activity Title='กิจกรรมมหาวิทยาลัย' required={3} activityList={activityList1}/>
 			<Activity Title='กิจกรรมเพื่อเสริมสร้างสมรรถนะ' required={4} activityList={activityList2}/>
 			<Activity Title='กิจกรรมเพื่อสังคม' required={1} activityList={activityList3}/>
