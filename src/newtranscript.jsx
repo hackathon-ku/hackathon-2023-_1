@@ -38,15 +38,15 @@ const Activity = ({ Title, required, activityList }) => {
 
 	return (
 		<div className='p-2'>
-			<div className={textColor ? 'bg-[#b6c7bb] flex justify-between' : 'bg-[#ffd1d1] flex justify-between'}>
-				<h4 className='pl-2'>{Title}</h4>
+			<div className={textColor ? 'bg-[#2ec28c] flex justify-between rounded-t-lg' : 'bg-[#f188a2] flex justify-between rounded-t-lg'}>
+				<h4 className='pl-2 text-white'>{Title}</h4>
 				<div className='flex w-fit justify-between pr-2'>
-					{!textColor ? <p className="text-[#ff0000]">ไม่ผ่าน</p> : <p className="text-[#023b05]">ผ่าน</p>}
-					<button className="pl-3" onClick={toggleBox}>{toggleIcon}</button>
+					{!textColor ? <p className="text-[#ffffff]">ไม่ผ่าน</p> : <p className="text-[#ffffff]">ผ่าน</p>}
+					<button className="pl-3 text-white" onClick={toggleBox}>{toggleIcon}</button>
 				</div>				
 			</div>
 			{ showBox && (
-				<div className={textColor ? 'bg-[#b6c7bb] bg-opacity-50' :' bg-[#e5c8c8] bg-opacity-50'} >
+				<div className={textColor ? 'bg-[#2bb482] bg-opacity-20' :' bg-[#f188A2] bg-opacity-20 '} >
 					<List className="w-full"/>
 				</div>
 			)}
