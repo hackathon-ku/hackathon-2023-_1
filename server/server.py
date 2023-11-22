@@ -10,6 +10,7 @@ class CustomJSONEncoder(json.JSONEncoder):
         return jsonable_encoder(o)
 
 def gethour(number) :
+    # print(number)
     client, database = connect_to_mongodb()
     collection_name = "fastapi"
     collection = database[collection_name]
