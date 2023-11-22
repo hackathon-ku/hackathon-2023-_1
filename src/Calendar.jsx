@@ -72,7 +72,26 @@ function ContinuousCalendar() {
 						</div>
 					</div>
 				</div>
-				<button className='top-[-300px] right-8 relative bg-red-600 rounded-full w-6 h-6 float-right hover:bg-red-800 hover:duration-500 duration-500' onClick={() => { setShowfilter(false) }}>x</button>
+				{/* <button className='top-[-300px] right-8 relative bg-red-600 rounded-full w-6 h-6 float-right hover:bg-red-800 hover:duration-500 duration-500' onClick={() => { setShowfilter(false) }}>x</button> */}
+				<button
+                        className="top-[-300px] right-8 relative text-gray-500 hover:text-gray-700"
+                        onClick={() => setShowfilter(false)}
+                        >
+                        <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            fill="none"
+                            viewBox="0 0 24 24"
+                            stroke="currentColor"
+                            className="h-6 w-6"
+                        >
+                            <path
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            strokeWidth="2"
+                            d="M6 18L18 6M6 6l12 12"
+                            />
+                        </svg>
+                    </button>
 			</div>
 		)
 	}
