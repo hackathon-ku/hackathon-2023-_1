@@ -6,6 +6,7 @@
 
 รายละเอียดโครงการ : https://docs.google.com/document/d/1bn_71K9RF_K8MaBbZNgUAtS7PgFJkon91lOat7AtFxw/edit
 
+Figma Design : https://www.figma.com/file/RDAfmZBO5MBqWpOdeKY2fo/Design?type=design&node-id=0-1&mode=design&t=xQrlMBO1pSSGsoy5-0
 
 คำสั่ง git พื้นฐานในการอัปโหลดโค้ดขึ้นมาที่ repository นี้
 
