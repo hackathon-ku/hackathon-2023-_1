@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState,useEffect } from 'react'
 import checkMark from './picture/image.png'
 
 
@@ -68,21 +68,31 @@ const Info = ({ studentNumber, name, faculty }) => {
 function newtranscript() {
 
 	const [studentNumber, setStudentNumber] = useState("6510503409")
-	const [name, setname] = useState("ธนภรณ์ กิจวรเกียรติ")
+	const [name, setname] = useState("")
 	const [faculty, setfaculty] = useState("วิศวกรรมคอมพิวเตอร์")
 	const [check, setcheck] = useState("")
 	const [activityList1,setActivityList1] = useState({
 		'Pround to be KU':4,
 		'โครงการปฐมนิเทศนิสิตใหม่':4
 	})
-	const [activityList2,setActivityList2] = useState({
-		'Pround to be KU':4,
-		'โครงการปฐมนิเทศนิสิตใหม่':4
-	})
+	const [activityList2,setActivityList2] = useState({})
 	const [activityList3,setActivityList3] = useState({
 		'Pround to be KU':4,
 		'โครงการปฐมนิเทศนิสิตใหม่':4
 	})
+    const fetchdata = async () => {
+        const response = await fetch(`http://localhost:8000/${studentNumber}`);
+        const data = await response.json();
+        setActivityList2(data[0].activity.activity2);
+        setActivityList1(data[0].activity.activity1);
+        setActivityList3(data[0].activity.activity3);
+        setname(data[0].name);
+        setfaculty(data[0].Faculty);
+        // console.log(data[0].name)
+    }
+    useEffect(()=> {
+        fetchdata();
+    },[])
 
 	return (
 	<div className="flex justify-space-around">
