@@ -1,5 +1,5 @@
 import React, { useState,useEffect } from 'react'
-import checkMark from '../picture/image.png'
+import backicon from '../picture/backicon.jpg'
 
 
 const Result = ({ a, b ,c}) => {
@@ -12,7 +12,7 @@ const Result = ({ a, b ,c}) => {
 			<div className={pass ? 'bg-[#2ec28c] flex justify-between rounded-t-lg' : 'bg-[#f188a2] flex justify-between rounded-t-lg'}>
 				<h4 className='pl-2 text-white'>Transcript กิจกรรมนิสิต</h4>
 			</div>
-			<div className={pass ? 'p-30 bg-[#2bb482] bg-opacity-20 text-[#2bb482] text-center text-4xl' :'p-5 bg-[#f188A2] bg-opacity-20 text-[#f188A2] text-center text-4xl'} >
+			<div className={pass ? 'p-2 bg-[#2bb482] bg-opacity-20 text-[#2bb482] text-center text-2xl' :'p-2 bg-[#f188A2] bg-opacity-20 text-[#f188A2] text-center text-2xl'} >
 				{ pass ? <p>PASS</p> : <p>NOT PASS</p>}
 			</div>
 		</div>
@@ -113,18 +113,22 @@ function newtranscript() {
     },[])
 
 	return (
-	<div className="flex justify-space-around font-kanit">
-		<div className="bg-white w-1/3 min-h-screen flex items-center justify-center border sm:hidden">
-		<img 
-			src= { checkMark }
-			alt="Your Alt Text"
-			className="max-w-40 max-h-40 "
-		/>
-		</div>
-		<div className="p-5 min-h-screen m-auto flex flex-col w-2/3 sm:w-full">
-			<h1 className='text-[#38804e] text-center  text-2xl p-5'>Activity Transcript</h1>
+	<div className="flex justify-space-around font-kanit sm:flex-col">
+		<div className="p-5 flex-col bg-white min-h-screen w-1/2 border items-center justify-between sm:w-full">
+			<button>
+				<img
+				// src="https://via.placeholder.com/30"
+				src = { backicon }
+				alt="User Avatar"
+				className="rounded-full h-8 w-8 mr-2"
+				/>
+			</button>
+			<h1 className='bg-[#fad34f] text-black text-center  text-2xl p-5 rounded '>Activity Transcript</h1>
+			<br></br>
 			<Info studentNumber={studentNumber} name={name} faculty={faculty}/>
 			<Result a = {activityList1} b = {activityList2} c = {activityList3}/>
+		</div>
+		<div className="p-5 min-h-screen m-auto flex-col w-1/2 sm:w-full">
 			<Activity Title='กิจกรรมมหาวิทยาลัย' required={3} activityList={activityList1}/>
 			<Activity Title='กิจกรรมเพื่อเสริมสร้างสมรรถนะ' required={4} activityList={activityList2}/>
 			<Activity Title='กิจกรรมเพื่อสังคม' required={1} activityList={activityList3}/>
@@ -133,7 +137,7 @@ function newtranscript() {
 			</div>
 		</div>
 	</div>
-  
+
 	)
 }
 
