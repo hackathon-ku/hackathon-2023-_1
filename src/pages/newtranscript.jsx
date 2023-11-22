@@ -1,5 +1,5 @@
 import React, { useState,useEffect } from 'react'
-import checkMark from '../picture/image.png'
+import backicon from '../picture/backicon.jpg'
 
 
 const Result = ({ a, b ,c}) => {
@@ -115,6 +115,14 @@ function newtranscript() {
 	return (
 	<div className="flex justify-space-around font-kanit sm:flex-col">
 		<div className="p-5 flex-col bg-white min-h-screen w-1/2 border items-center justify-between sm:w-full">
+			<button>
+				<img
+				// src="https://via.placeholder.com/30"
+				src = { backicon }
+				alt="User Avatar"
+				className="rounded-full h-8 w-8 mr-2"
+				/>
+			</button>
 			<h1 className='bg-[#fad34f] text-black text-center  text-2xl p-5 rounded '>Activity Transcript</h1>
 			<br></br>
 			<Info studentNumber={studentNumber} name={name} faculty={faculty}/>
