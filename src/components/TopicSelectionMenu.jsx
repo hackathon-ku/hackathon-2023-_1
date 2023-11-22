@@ -40,13 +40,13 @@ const TopicSelectionMenu = ({ onClose }) => {
           className="block px-4 py-2 text-sm text-gray-800 hover:bg-gray-200 w-full text-left mb-2"
           onClick={() => handleTopicSelect('Topic 2')}
         >
-          Topic 2
+          KU Transcript
         </button>
         <button
           className="block px-4 py-2 text-sm text-gray-800 hover:bg-gray-200 w-full text-left mb-2"
           onClick={() => handleTopicSelect('Topic 3')}
         >
-          Topic 3
+          Topic 2
         </button>
         <button
           className="block px-4 py-2 text-sm text-gray-800 hover:bg-gray-200 w-full text-left"
