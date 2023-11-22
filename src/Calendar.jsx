@@ -20,6 +20,15 @@ function ContinuousCalendar() {
 	const handleDateChange = (date) => {
 		setSelectedDate(date);
 	};
+    const tileContent = ({ date, view }) => {
+        const eventDates = events.map((event) => moment(event.date).toDate());
+      
+        if (view === 'month' && eventDates.some((eventDate) => moment(eventDate).isSame(date, 'day'))) {
+          return 'highlight';
+        }
+      
+        return null;
+      };
 
 	const filteredEvents = events.filter((event) =>
 		moment(event.date).isSame(selectedDate, 'day')
@@ -102,7 +111,7 @@ function ContinuousCalendar() {
 			<div className='top-0 w-screen flex sm:justify-center '>
 				<div className='w-screen flex sm:flex-col sm:justify-normal justify-evenly'>
 					<div className='flex-item'>
-						<Calendar className=" " onChange={handleDateChange} value={selectedDate} />
+						<Calendar className=" " onChange={handleDateChange} value={selectedDate} tileClassName={tileContent}/>
 					</div>
 					<div className='flex-item'>
 						<button className=' bg-pink-400 w-20' onClick={() => {
