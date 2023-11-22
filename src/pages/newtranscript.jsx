@@ -81,7 +81,7 @@ function newtranscript() {
 		'โครงการปฐมนิเทศนิสิตใหม่':4
 	})
     const fetchdata = async () => {
-        const response = await fetch(`http://localhost:8000/${studentNumber}`);
+        const response = await fetch(`http://localhost:8000/transcript/${studentNumber}`);
         const data = await response.json();
         setActivityList2(data[0].activity.activity2);
         setActivityList1(data[0].activity.activity1);
