@@ -6,7 +6,7 @@ import moment from 'moment';
 
 function ContinuousCalendar() {
 	const [selectedDate, setSelectedDate] = useState(null);
-    const [isload,setisload] = useState(true);
+    const [isload,setisload] = useState(false);
 	const [events, setEvents] = useState([
 		{ date: '2023-11-15', title: 'Event 1', Faculty: 'Engineer' },
 		{ date: '2023-11-15', title: 'Event 2', Faculty: 'Economy' },
@@ -32,12 +32,12 @@ function ContinuousCalendar() {
 		setSelectedDate(date);
 	};
     const tileContent = ({ date, view }) => {
-        // const eventDates = events
-        //   .flatMap((event) => event.date.map((date) => moment(date).toDate()));
+        const eventDates = events
+          .flatMap((event) => event.date.map((date) => moment(date).toDate()));
       
-        // if (view === 'month' && eventDates.some((eventDate) => moment(eventDate).isSame(date, 'day'))) {
-        //   return 'highlight';
-        // }
+        if (view === 'month' && eventDates.some((eventDate) => moment(eventDate).isSame(date, 'day'))) {
+          return 'highlight';
+        }
       
         return null;
       };
@@ -123,10 +123,12 @@ function ContinuousCalendar() {
 	return (
 		<div className='font-kanit'>
 			<div className='w-screen flex sm:justify-center '>
-				<div className='w-screen flex sm:flex-col sm:justify-normal justify-evenly'>
-					{isload && <div className='flex-item'>
+				<div className='w-screen flex sm:flex-col sm:justify-normal justify-evenly h-screen'>
+					<div>
+                    {isload && <div className='mt-[180px] sm:w-screen sm:items-center sm:justify-center'>
 						<Calendar className="" onChange={handleDateChange} value={selectedDate} tileClassName={tileContent}/>
 					</div>}
+                    </div>
 					<div className='flex-item'>
 						<button className=' bg-pink-400 w-20 rounded' onClick={() => {
 							setShowfilter(true);
