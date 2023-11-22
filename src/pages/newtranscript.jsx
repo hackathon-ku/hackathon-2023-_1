@@ -1,5 +1,5 @@
 import React, { useState,useEffect } from 'react'
-import checkMark from './picture/image.png'
+import checkMark from '../picture/image.png'
 
 
 const Activity = ({ Title, required, activityList }) => {

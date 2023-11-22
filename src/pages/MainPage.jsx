@@ -1,7 +1,7 @@
 // src/components/Homepage.js
 import React, { useState } from 'react';
-import TopicSelectionMenu from './TopicSelectionMenu';
-import Profile from './picture/ProfileHolder.jpg'
+import TopicSelectionMenu from '../components/TopicSelectionMenu';
+import Profile from '../picture/ProfileHolder.jpg'
 
 const Homepage = () => {
   const [isMenuOpen, setMenuOpen] = useState(false);
