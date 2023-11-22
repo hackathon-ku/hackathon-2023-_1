@@ -1,6 +1,7 @@
 // src/components/Homepage.js
 import React, { useState } from 'react';
 import TopicSelectionMenu from './TopicSelectionMenu';
+import Profile from './picture/ProfileHolder.jpg'
 
 const Homepage = () => {
   const [isMenuOpen, setMenuOpen] = useState(false);
@@ -33,7 +34,8 @@ const Homepage = () => {
           <div className="flex items-center">
             {/* User details */}
             <img
-              src="https://via.placeholder.com/30"
+              // src="https://via.placeholder.com/30"
+              src = { Profile }
               alt="User Avatar"
               className="rounded-full h-8 w-8 mr-2"
             />
