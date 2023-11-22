@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState ,useEffect} from 'react';
 import Calendar from 'react-calendar';
 import 'react-calendar/dist/Calendar.css';
 import moment from 'moment';
@@ -6,12 +6,23 @@ import moment from 'moment';
 
 function ContinuousCalendar() {
 	const [selectedDate, setSelectedDate] = useState(null);
+    const [isload,setisload] = useState(false);
 	const [events, setEvents] = useState([
 		{ date: '2023-11-15', title: 'Event 1', Faculty: 'Engineer' },
 		{ date: '2023-11-15', title: 'Event 2', Faculty: 'Economy' },
 		{ date: '2023-11-16', title: 'Event 3', Faculty: 'Sci' },
 		// Add more events as needed
 	]);
+    const fetchevent = async() => {
+        const response = await fetch(`http://127.0.0.1:8000/calendar/`);
+        const data = await response.json();
+        setEvents(data);
+        setisload(true);
+        console.log(data);
+    }
+    useEffect(() => {
+        fetchevent();
+    },[])
 	const [showfilter, setShowfilter] = useState(false);
 	const [showFilterFac, setshowFilterFac] = useState(false);
 	const [showFilterActi, setshowFilterActi] = useState(false);
@@ -21,7 +32,8 @@ function ContinuousCalendar() {
 		setSelectedDate(date);
 	};
     const tileContent = ({ date, view }) => {
-        const eventDates = events.map((event) => moment(event.date).toDate());
+        const eventDates = events
+          .flatMap((event) => event.date.map((date) => moment(date).toDate()));
       
         if (view === 'month' && eventDates.some((eventDate) => moment(eventDate).isSame(date, 'day'))) {
           return 'highlight';
@@ -30,9 +42,11 @@ function ContinuousCalendar() {
         return null;
       };
 
-	const filteredEvents = events.filter((event) =>
-		moment(event.date).isSame(selectedDate, 'day')
-	);
+    const formattedSelectedDate = selectedDate ? moment(selectedDate).format('YYYY-MM-DD') : null;
+
+    const filteredEvents = events.filter((event) =>
+        event.date && event.date.includes(formattedSelectedDate)
+    );
 
 	const FilterList =({list, setShow})=>{
 		return(
@@ -110,9 +124,9 @@ function ContinuousCalendar() {
 		<div>
 			<div className='top-0 w-screen flex sm:justify-center '>
 				<div className='w-screen flex sm:flex-col sm:justify-normal justify-evenly'>
-					<div className='flex-item'>
-						<Calendar className=" " onChange={handleDateChange} value={selectedDate} tileClassName={tileContent}/>
-					</div>
+					{isload && <div className='flex-item'>
+						<Calendar className="" onChange={handleDateChange} value={selectedDate} tileClassName={tileContent}/>
+					</div>}
 					<div className='flex-item'>
 						<button className=' bg-pink-400 w-20' onClick={() => {
 							setShowfilter(true);
@@ -124,7 +138,15 @@ function ContinuousCalendar() {
 								{filteredEvents.length > 0 ? (
 									<ul>
 										{filteredEvents.map((event, index) => (
-											<li key={index}>{event.title} From {event.Faculty}</li>
+											<li key={index}>
+                                                <a href= {event.detail} className='w-[300px] h-[300px] bg-slate-200 block mb-[10px]'>
+                                                <img src={event.image} className='w-[300px] h-[200px] object-cover' alt="" />
+                                                <p>{event.name}</p> 
+                                                <p>From {event.host.join(', ')}</p>
+                                                <p>Activity Type : {event.activitytype}</p>
+                                                <p>Hour : {event.hour}</p>
+                                                </a>
+                                                </li>
 										))}
 									</ul>
 								) : (

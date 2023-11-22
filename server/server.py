@@ -24,6 +24,19 @@ def gethour(number) :
     client.close()
     return result_json
 
+def getcalendar() :
+    client, database = connect_to_mongodb()
+    collection_name = "calendar"
+    collection = database[collection_name]
+    result = collection.find()
+    # print(result)
+    data = []
+    for doc in result :
+        data.append(doc)
+    # print(data[0])
+    result_json = [convert_to_json(d) for d in data]
+    client.close()
+    return result_json
 
 
 app = FastAPI()
@@ -35,6 +48,10 @@ app.add_middleware(
     allow_methods=["*"],
     allow_headers=["*"],
 )
-@app.get("/{number}")
+@app.get("/transcript/{number}")
 async def root(number):
 	return gethour(number)
+
+@app.get("/calendar/")
+async def calendar():
+    return getcalendar()

@@ -15,10 +15,6 @@ def connect_to_mongodb():
 
     # Access the database
     db = client[database_name]
-    docs = db["fastapi"].find({})
-    data = []
-    for doc in docs :
-        data.append(doc)
     # print(data)
     return client, db
 # connect_to_mongodb()
