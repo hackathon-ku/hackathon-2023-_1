@@ -2,6 +2,7 @@ import React, { useState ,useEffect} from 'react';
 import Calendar from 'react-calendar';
 import 'react-calendar/dist/Calendar.css';
 import moment from 'moment';
+import Filling from '../components/filling';
 //import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 function ContinuousCalendar() {
@@ -24,10 +25,14 @@ function ContinuousCalendar() {
         fetchevent();
     },[])
 	const [showfilter, setShowfilter] = useState(false);
-	const [showFilterFac, setshowFilterFac] = useState(false);
-	const [showFilterActi, setshowFilterActi] = useState(false);
-	const [showFilterCampus, setshowFilterCampus] = useState(false);
-	const Faculty = ["Sci", "Engineer", "Econ"];
+	// const [showFilterFac, setshowFilterFac] = useState(false);
+	// const [showFilterActi, setshowFilterActi] = useState(false);
+	// const [showFilterCampus, setshowFilterCampus] = useState(false);
+	//const Faculty = ["Sci", "Engineer", "Econ"];
+	const [Faculty, setFaculty] = useState(["Sci", "Engineer", "Econ",'a', 'b', 'c', 'd', 'e']);
+	const [Acti, setActi] = useState(["สังคม", "มหาลัย"]);
+	const [Campus, setCampus] = useState(["บางเขน", "กำแพงแสน"]);
+
 	const handleDateChange = (date) => {
 		setSelectedDate(date);
 	};
@@ -48,19 +53,19 @@ function ContinuousCalendar() {
         event.date && event.date.includes(formattedSelectedDate)
     );
 
-	const FilterList =({list, setShow})=>{
-		return(
-			<div className='flex top-0 left-0 absolute w-screen h-screen justify-center items-center  bg-black bg-opacity-70'>
-				<div className='bg-white'>
-					<button onClick={() => { setShow(false) }} className="bg-red-600 border">x</button>
-					{list.map((item, index) => (
-						<p>{item}</p>
-					))}
-				</div>
+	// const FilterList =({list, setShow})=>{
+	// 	return(
+	// 		<div className='flex top-0 left-0 absolute w-screen h-screen justify-center items-center  bg-black bg-opacity-70'>
+	// 			<div className='bg-white'>
+	// 				<button onClick={() => { setShow(false) }} className="bg-red-600 border">x</button>
+	// 				{list.map((item, index) => (
+	// 					<p>{item}</p>
+	// 				))}
+	// 			</div>
 				
-			</div>	
-		)
-	}
+	// 		</div>	
+	// 	)
+	// }
 
 	const Filter =()=>{
 		return(
@@ -68,19 +73,22 @@ function ContinuousCalendar() {
 				<div className=' w-[40em] h-[40em] sm:w-[25rem] bg-white rounded-[20px]'>
 					<div className='header flex justify-evenly'>
 						<div className='flex-col justify-evenly'>
-							<div className='w-[120px] h-[140px] flex flex-col justify-center items-center'>
-								<div className='w-12 h-12 bg-yellow-500 rounded-full hover:bg-yellow-900 hover:duration-500 duration-500 cursor-pointer'  onClick={() => { setshowFilterCampus(true) }}></div>
+							<div className='w-[400px] sm:w-[250px] h-[140px] flex flex-col justify-center items-center'>
+								{/* <div className='w-12 h-12 bg-yellow-500 rounded-full hover:bg-yellow-900 hover:duration-500 duration-500 cursor-pointer'  ></div> */}
 								<h1>วิทยาเขต</h1>
+								<Filling list={Campus} color="bg-yellow-100" />
 								<h1></h1>
 							</div>
-							<div className='w-[120px] h-[140px] flex flex-col justify-center items-center'>
-								<div className='w-12 h-12 bg-pink-500 rounded-full hover:bg-pink-900 hover:duration-500 duration-500 cursor-pointer'  onClick={() => { setshowFilterActi(true) }}></div>
+							<div className='w-[400px] sm:w-[250px] h-[140px] flex flex-col justify-center items-center'>
+								{/* <div className='w-12 h-12 bg-pink-500 rounded-full hover:bg-pink-900 hover:duration-500 duration-500 cursor-pointer'  onClick={() => { setshowFilterActi(true) }}></div> */}
 								<h1>กิจกรรม</h1>
+								<Filling list={Acti} color="bg-pink-100" />
 								<h1></h1>
 							</div>
-							<div className='w-[120px] h-[140px] flex flex-col justify-center items-center'>
-								<div className='w-12 h-12 bg-green-500 rounded-full hover:bg-green-900 hover:duration-500 duration-500 cursor-pointer' onClick={() => { setshowFilterFac(true) }}></div>
+							<div className='w-[400px] sm:w-[250px] h-[140px] flex flex-col justify-center items-center'>
+								{/* <div className='w-12 h-12 bg-green-500 rounded-full hover:bg-green-900 hover:duration-500 duration-500 cursor-pointer' onClick={() => { setshowFilterFac(true) }}></div> */}
 								<h1>ชมรม/คณะ</h1>
+								<Filling list={Faculty} color="bg-green-100" />
 								<h1></h1>
 							</div>
 						</div>
@@ -161,9 +169,9 @@ function ContinuousCalendar() {
 			</div>
 
 			{showfilter && (<Filter/>)}
-			{showFilterFac && (<FilterList list={Faculty} setShow={setshowFilterFac}/>)}
+			{/* {showFilterFac && (<FilterList list={Faculty} setShow={setshowFilterFac}/>)}
 			{showFilterActi && (<FilterList list={Faculty} setShow={setshowFilterActi}/>)}
-			{showFilterCampus && (<FilterList list={Faculty} setShow={setshowFilterCampus}/>)}
+			{showFilterCampus && (<FilterList list={Faculty} setShow={setshowFilterCampus}/>)} */}
 		</div>
 	);
 };
