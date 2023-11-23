@@ -37,6 +37,6 @@ git push -u origin main
 npm install
 npm run dev
 cd server
-pip install -r requirement.txt
+pip install -r requirements.txt
 uvicorn server:app --reload
 ```
