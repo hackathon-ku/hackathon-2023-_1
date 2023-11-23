@@ -9,17 +9,19 @@ function inputpage() {
     const [activity, setActivity] = useState(['Select...']);
     const [hour,setHour] = useState();
     const [link,setLink] = useState();
+    const [campus,setCampus] = useState();
     const activitytypelist = ["กิจกรรมมหาวิทยาลัย","กิจกรรมเพื่อสังคม","กิจกรรมเสริมสร้างสมรรถภาพ"];
     const postevent = async(e) => {
         e.preventDefault();
         const requestData = {
             name: name,
-            dates: [startdate, enddate], // Adjust if both dates are needed
-            hosts: host,
+            date: [startdate, enddate], // Adjust if both dates are needed
+            host: host,
             activitytype: activity,
             hour: hour,
             image: "",
             detail:link,
+            campus:campus,
           };
         const response = await fetch('http://127.0.0.1:8000/addevent',{
             method : 'POST',
@@ -42,13 +44,15 @@ function inputpage() {
             <p>วันที่สิ้นสุด</p>
             <input type='date' className='border' value={enddate} onChange={(e) => {setEnddate(e.target.value)}}/>
             <p>ผู้จัด</p>
-            <Filling className = "border" color="bg-green-300" list = {["Sci","Eng"]} ans={host} setAns={setHost}/>
+            <Filling className = "border" color="bg-green-300" list = {["KUTech","Engineer","KUStartUP"]} ans={host} setAns={setHost}/>
             <p>ประเภทกิจกรรม</p>
             <Filling className = "border" color="bg-green-300" list = {activitytypelist} ans={activity} setAns={setActivity}/>
             <p>ชั่วโมงกิจกรรม</p>
             <input type="number" className='border' value={hour} onChange={(e) => {setHour(e.target.value)}}/>
             <p>ลิ้งค์กิจกรรม</p>
             <input type="text" className='border w-[400px]' value={link} onChange={(e) => {setLink(e.target.value)}} />
+            <p>วิทยาเขต</p>
+            <input type="text" className='border w-[400px]' value = {campus} onChange={(e) => {setCampus(e.target.value)}}/>
             <br />
             <button type="submit" onClick = {postevent}className='border mt-[50px]'>submit</button>
         </div>
