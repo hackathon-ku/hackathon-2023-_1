@@ -1,9 +1,20 @@
-from fastapi import FastAPI
+from fastapi import FastAPI,BackgroundTasks
 from fastapi.middleware.cors import CORSMiddleware
 from db import connect_to_mongodb, convert_to_json
 import pymongo
 import json
+from pydantic import BaseModel
+from typing import List
+from fastapi.responses import JSONResponse
 
+class Event(BaseModel):
+    name: str
+    dates: List[str]
+    hosts: List[str]
+    activitytype: List[str]
+    hour: str
+    image: str
+    detail :str
 
 class CustomJSONEncoder(json.JSONEncoder):
     def default(self, o):
@@ -38,6 +49,13 @@ def getcalendar() :
     client.close()
     return result_json
 
+def postevent(event:Event):
+    client, database = connect_to_mongodb()
+    collection_name = "calendar"
+    collection = database[collection_name]
+    event_dict = event.dict()
+    result = collection.insert_one(event_dict)
+    return "success"
 
 app = FastAPI()
 
@@ -55,3 +73,8 @@ async def root(number):
 @app.get("/calendar/")
 async def calendar():
     return getcalendar()
+
+@app.post("/addevent/")
+async def addevent(event: Event, background_tasks: BackgroundTasks):
+    background_tasks.add_task(postevent, event)
+    return JSONResponse(content=event.dict(), status_code=201)
