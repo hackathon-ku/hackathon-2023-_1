@@ -6,18 +6,18 @@
 
 รายละเอียดโครงการ : https://docs.google.com/document/d/1bn_71K9RF_K8MaBbZNgUAtS7PgFJkon91lOat7AtFxw/edit
 
-ชื่อ Feature : KUCalendar2.0 and Transcript2.0
-Team Name : ที่จริงใจ
-Team Member :
-1.ปาณิสรา รัตนพฤกษ์ 
-2.ปาลิดา มูลตรีมา 
-3.ภูวนัตถ์ เนียมหลวง
-4.พัทธดนย์ ตันติเอมอร
-5.ธนภรณ์ กิจวรเกียรติ
+<p>ชื่อ Feature : KUCalendar2.0 and Transcript2.0</p>
+<p>Team Name : ที่จริงใจ</p>
+<p>Team Member :</p>
+<p>1.ปาณิสรา รัตนพฤกษ์</p>
+<p>2.ปาลิดา มูลตรีมา</p>
+<p>3.ภูวนัตถ์ เนียมหลวง</p>
+<p>4.พัทธดนย์ ตันติเอมอร</p>
+<p>5.ธนภรณ์ กิจวรเกียรติ</p>
 <img src=""/>
-คำอธิบาย Feature : ปฎิทินกิจกรรมที่สามารถเพิ่มกิจกรรมจากหัวหน้าของหน่วยงานที่ต้องการจัดกิจกรรมได้ และมีฟิลเตอร์ที่ช่วยในการกรองเฉพาะกิจกรรมที่สนใจได้ หน้า Activity Transcript ใหม่ที่ช่วยสรุปข้อมูลที่นิสิตต้องการได้ในหน้าเดียว
+<p>คำอธิบาย Feature : ปฎิทินกิจกรรมที่สามารถเพิ่มกิจกรรมจากหัวหน้าของหน่วยงานที่ต้องการจัดกิจกรรมได้ และมีฟิลเตอร์ที่ช่วยในการกรองเฉพาะกิจกรรมที่สนใจได้ หน้า Activity Transcript ใหม่ที่ช่วยสรุปข้อมูลที่นิสิตต้องการได้ในหน้าเดียว</p>
 
-Figma Design : https://www.figma.com/file/RDAfmZBO5MBqWpOdeKY2fo/Design?type=design&node-id=0-1&mode=design&t=xQrlMBO1pSSGsoy5-0
+<p>Figma Design : https://www.figma.com/file/RDAfmZBO5MBqWpOdeKY2fo/Design?type=design&node-id=0-1&mode=design&t=xQrlMBO1pSSGsoy5-0</p>
 
 คำสั่ง git พื้นฐานในการอัปโหลดโค้ดขึ้นมาที่ repository นี้
 
