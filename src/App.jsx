@@ -15,8 +15,8 @@ function App() {
       <Routes>
         <Route path="/NisitKU" element={<Layout />}>
           <Route index element={<Mainpage />} />
-          <Route path="Newtranscript" element={<Newtranscript />} />
-		  <Route path="CalendarKU" element={<CalendarKU />} />
+          <Route path="/NisitKU/Newtranscript" element={<Newtranscript />} />
+		      <Route path="/NisitKU/CalendarKU" element={<CalendarKU />} />
           {/* <Route path="*" element={<NoPage />} /> */}
         </Route>
       </Routes>
