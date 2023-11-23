@@ -5,7 +5,7 @@ import Profile from '../picture/ProfileHolder.jpg'
 import Menu from '../picture/Menu.jpg'
 import { useNavigate } from 'react-router';
 import Calendar from '../picture/KuEvent.jpg'
-import TranScript from '../picture/TranScript.jpg'
+import TranScript from '../picture/Transcript.jpg'
 
 const Homepage = () => {
   const navigate = useNavigate();
@@ -16,7 +16,7 @@ const Homepage = () => {
   };
 
   return (
-    <div className="bg-[#f8f8f8] min-h-screen relative">
+    <div className="bg-[#383737] min-h-screen relative">
       {/* Navbar */}
       <nav className="bg-[#07665e] p-4 text-white">
         <div className="flex justify-between items-center">

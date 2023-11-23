@@ -3,7 +3,7 @@ import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
 
 import Newtranscript from './pages/newtranscript.jsx';
 import TopicSelectionMenu from './components/TopicSelectionMenu.jsx';
-import Mainpage from './pages/Mainpage.jsx';
+import Mainpage from './pages/MainPage.jsx';
 import Layout from "./pages/Layout";
 import CalendarKU from './pages/Calendar.jsx';
 
