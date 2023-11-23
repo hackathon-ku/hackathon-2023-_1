@@ -122,7 +122,7 @@ function newtranscript() {
 
 	return (
 		<div className="bg-[#f8f8f8] flex font-kanit sm:flex-col">
-			<div className="p-5 flex-col bg-white w-1/2 h-full sm:w-full">
+			<div className="p-5 flex-col bg-[#f8f8f8] w-1/2 h-full sm:w-full">
 				<button onClick={() => navigate('/NisitKU')}>
 					<img
 						src={backicon}

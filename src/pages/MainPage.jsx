@@ -16,7 +16,7 @@ const Homepage = () => {
   };
 
   return (
-    <div className="bg-[#383737] min-h-screen relative">
+    <div className="bg-[#f8f8f8] min-h-screen relative">
       {/* Navbar */}
       <nav className="bg-[#07665e] p-4 text-white">
         <div className="flex justify-between items-center">
