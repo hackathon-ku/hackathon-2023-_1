@@ -122,24 +122,26 @@ function newtranscript() {
 
 	return (
 		<div className="bg-[#f8f8f8] flex font-kanit sm:flex-col">
-			<div className="p-5 flex-col bg-[#f8f8f8] w-1/2 h-full sm:w-full">
+			<div className="h-screen p-5 flex-col bg-[#f8f8f8] w-1/2 sm:w-full sm:h-full">
 				<button onClick={() => navigate('/NisitKU')}>
 					<img
 						src={backicon}
 						className="rounded-full h-8 w-8 mr-2"
 					/>
 				</button>
+                <div className='flex flex-col h-full justify-center sm:justify-normal'>
+                <div>
 				<h1 className='bg-[#fad34f] text-black text-center  text-2xl p-5 rounded '>Activity Transcript</h1>
 				<br></br>
 				<Info studentNumber={studentNumber} name={name} faculty={faculty} />
 				<Result a={activityList1} b={activityList2} c={activityList3} />
+                </div>
+                </div>
 			</div>
-			<div className="p-5 min-h-screen m-auto flex-col w-1/2 sm:w-full">
+			<div className="p-5 min-h-screen m-auto flex flex-col justify-center w-1/2 sm:w-full sm:justify-normal">
 				<Activity Title='กิจกรรมมหาวิทยาลัย' required={3} activityList={activityList1} />
 				<Activity Title='กิจกรรมเพื่อเสริมสร้างสมรรถนะ' required={4} activityList={activityList2} />
 				<Activity Title='กิจกรรมเพื่อสังคม' required={1} activityList={activityList3} />
-				<div className='text-center mt-auto mb-auto'>
-				</div>
 			</div>
 		</div>
 

@@ -29,8 +29,9 @@ function Event_Box({
             <div className='w-3/4 p-2 mr-6'>
                 <h1 className='py-2 font-bold'>{topic}</h1>
                 <h3 >วันที่: {date}</h3>
+                <h3>ผู้จัด: {host}</h3>
                 <div className='flex w-full justify-between'>
-                    <h3>ผู้จัด: {host}</h3>
+                    <h3>{activitytype}</h3>
                     <h3>{hour} ชั่วโมง</h3>
                 </div>
                 <div className='w-full py-2'>
