@@ -35,6 +35,8 @@ git push -u origin main
 คำสั่ง run 
 ```bash
 npm install
+npm run dev
 cd server
 pip install -r requirement.txt
+uvicorn server:app --reload
 ```
