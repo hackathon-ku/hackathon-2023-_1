@@ -13,7 +13,7 @@ function App() {
   return (
     <Router>
       <Routes>
-        <Route path="/NisitKU" element={<Layout />}>
+        <Route path="/NisitKU/" element={<Layout />}>
           <Route index element={<Mainpage />} />
           <Route path="/NisitKU/Newtranscript" element={<Newtranscript />} />
 		      <Route path="/NisitKU/CalendarKU" element={<CalendarKU />} />
