@@ -1,24 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import backicon from '../picture/backicon.jpg'
+import { useNavigate } from 'react-router-dom';
 
-
-const Result = ({ a, b, c }) => {
-	const counta = Object.keys(a).length;
-	const countb = Object.keys(b).length;
-	const countc = Object.keys(c).length;
-	let pass = (counta > 3 && countb > 4 && countc > 1) ? true : false;
-	return (
-		<div className='p-2'>
-			<div className={pass ? 'bg-[#2ec28c] flex justify-between rounded-t-lg' : 'bg-[#f188a2] flex justify-between rounded-t-lg'}>
-				<h4 className='pl-2 text-white'>Transcript กิจกรรมนิสิต</h4>
-			</div>
-			<div className={pass ? 'p-2 bg-[#2bb482] bg-opacity-20 text-[#2bb482] text-center text-2xl' : 'p-2 bg-[#f188A2] bg-opacity-20 text-[#f188A2] text-center text-2xl'} >
-				{pass ? <p>PASS</p> : <p>NOT PASS</p>}
-			</div>
-		</div>
-
-	)
-}
 
 const Activity = ({ Title, required, activityList }) => {
 
@@ -82,18 +65,44 @@ const Info = ({ studentNumber, name, faculty }) => {
 	)
 }
 
+const Result = ({ a, b, c }) => {
+	const counta = Object.keys(a).length;
+	const countb = Object.keys(b).length;
+	const countc = Object.keys(c).length;
+	let pass = (counta >= 3 && countb >= 4 && countc >= 1) ? true : false;
+	return (
+		<div className='p-2'>
+			<div className={pass ? 'bg-[#2ec28c] flex justify-between rounded-t-lg' : 'bg-[#f188a2] flex justify-between rounded-t-lg'}>
+				<h4 className='pl-2 text-white'>Transcript กิจกรรมนิสิต</h4>
+			</div>
+			<div className={pass ? 'p-2 bg-[#2bb482] bg-opacity-20 text-[#2bb482] text-center text-2xl' : 'p-2 bg-[#f188A2] bg-opacity-20 text-[#f188A2] text-center text-2xl'} >
+				{pass ? <p>PASS</p> : <p>NOT PASS</p>}
+			</div>
+		</div>
+
+	)
+}
+
 
 function newtranscript() {
-
+	const navigate = useNavigate();
 	const [studentNumber, setStudentNumber] = useState("6510503409")
 	const [name, setname] = useState("")
 	const [faculty, setfaculty] = useState("วิศวกรรมคอมพิวเตอร์")
 	const [check, setcheck] = useState("")
 	const [activityList1, setActivityList1] = useState({
 		'Pround to be KU': 4,
-		'โครงการปฐมนิเทศนิสิตใหม่': 4
+		'โครงการปฐมนิเทศนิสิตใหม่': 4,
+		'a': 4,
+		'b': 4
+		
 	})
-	const [activityList2, setActivityList2] = useState({})
+	const [activityList2, setActivityList2] = useState({
+		'Pround to be KU': 4,
+		'โครงการปฐมนิเทศนิสิตใหม่': 4,
+		'a': 4,
+		'b': 4
+	})
 	const [activityList3, setActivityList3] = useState({
 		'Pround to be KU': 4,
 		'โครงการปฐมนิเทศนิสิตใหม่': 4
@@ -113,14 +122,11 @@ function newtranscript() {
 	}, [])
 
 	return (
-		<div className="flex justify-space-around font-kanit sm:flex-col">
-			<div className="p-5 flex-col bg-white w-1/2 items-center  justify-between sm:w-full">
-
-				<button>
+		<div className="flex font-kanit sm:flex-col">
+			<div className="p-5 flex-col bg-white w-1/2 h-full sm:w-full">
+				<button onClick={() => navigate('/NisitKU')}>
 					<img
-						// src="https://via.placeholder.com/30"
 						src={backicon}
-						alt="User Avatar"
 						className="rounded-full h-8 w-8 mr-2"
 					/>
 				</button>
@@ -134,7 +140,6 @@ function newtranscript() {
 				<Activity Title='กิจกรรมเพื่อเสริมสร้างสมรรถนะ' required={4} activityList={activityList2} />
 				<Activity Title='กิจกรรมเพื่อสังคม' required={1} activityList={activityList3} />
 				<div className='text-center mt-auto mb-auto'>
-					<button className='bg-[#6acb87] text-white text-center text-xl rounded-lg pt-1 pb-1 w-1/2'>กลับ</button>
 				</div>
 			</div>
 		</div>

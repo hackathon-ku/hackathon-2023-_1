@@ -9,14 +9,8 @@ const TopicSelectionMenu = ({ onClose }) => {
     console.log(`Selected topic: ${topic}`);
 
     switch (topic) {
-      case 'Topic 1':
-        navigate('/NisitKU');
-        break;
       case 'KU Transcript':
         navigate('/NisitKU/Newtranscript');
-        break;
-      case 'Topic 2':
-        navigate('/NisitKU');
         break;
       case 'KU Calendar':
         navigate('/NisitKU/CalendarKU');
@@ -50,22 +44,10 @@ const TopicSelectionMenu = ({ onClose }) => {
           </svg>
         </button>
         <button
-          className="block px-4 py-2 text-sm text-gray-800 hover:bg-gray-200 w-full text-left mb-2"
-          onClick={() => handleTopicSelect('Topic 1')}
-        >
-          Topic 1
-        </button>
-        <button
-          className="block px-4 py-2 text-sm text-gray-800 hover:bg-gray-200 w-full text-left mb-2"
+          className="block px-4 py-2 text-sm text-gray-800 hover:bg-gray-200 w-full text-left mt-5 mb-2"
           onClick={() => handleTopicSelect('KU Transcript')}
         >
           KU Transcript
-        </button>
-        <button
-          className="block px-4 py-2 text-sm text-gray-800 hover:bg-gray-200 w-full text-left mb-2"
-          onClick={() => handleTopicSelect('Topic 3')}
-        >
-          Topic 2
         </button>
         <button
           className="block px-4 py-2 text-sm text-gray-800 hover:bg-gray-200 w-full text-left"
