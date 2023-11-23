@@ -9,6 +9,7 @@ const Activity = ({ Title, required, activityList }) => {
 	let textColor = (count < required) ? false : true;
 	const [showBox, setShowBox] = useState(false);
 	const [toggleIcon, setToggleIcon] = useState("+");
+	const navigate = useNavigate();
 
 	const toggleBox = () => {
 		setShowBox(!showBox);
@@ -29,8 +30,9 @@ const Activity = ({ Title, required, activityList }) => {
 				{textColor
 					? <p className='text-center pt-3'>รวม {count} กิจกรรม {sumOfValues} ชั่วโมง</p>
 					: <div className='text-center pt-3'>
+			
 						<p>ต้องการอีก {required - count} กิจกรรม</p>
-						<a className=' text-[#ff0000] underline'>ค้นหากิจกรรม</a>
+						<button className=' text-[#ff0000] underline' onClick={() => navigate('/NisitKU/CalendarKU')}>ค้นหากิจกรรม</button>
 					</div>
 				}
 			</div>
@@ -93,9 +95,6 @@ function newtranscript() {
 	const [activityList1, setActivityList1] = useState({
 		'Pround to be KU': 4,
 		'โครงการปฐมนิเทศนิสิตใหม่': 4,
-		'a': 4,
-		'b': 4
-		
 	})
 	const [activityList2, setActivityList2] = useState({
 		'Pround to be KU': 4,
