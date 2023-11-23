@@ -3,8 +3,12 @@ import React, { useState } from 'react';
 import TopicSelectionMenu from '../components/TopicSelectionMenu';
 import Profile from '../picture/ProfileHolder.jpg'
 import Menu from '../picture/Menu.jpg'
+import { useNavigate } from 'react-router';
+import Calendar from '../picture/KuEvent.jpg'
+import TranScript from '../picture/TranScript.jpg'
 
 const Homepage = () => {
+  const navigate = useNavigate();
   const [isMenuOpen, setMenuOpen] = useState(false);
 
   const handleMenuToggle = () => {
@@ -12,7 +16,7 @@ const Homepage = () => {
   };
 
   return (
-    <div className="bg-white min-h-screen relative">
+    <div className="bg-[#f8f8f8] min-h-screen relative">
       {/* Navbar */}
       <nav className="bg-[#07665e] p-4 text-white">
         <div className="flex justify-between items-center">
@@ -36,11 +40,18 @@ const Homepage = () => {
       </nav>
 
       {/* Main content */}
-      <div className="p-8">
-        <h1 className="text-4xl font-bold mb-4">Homepage</h1>
-        <p className="text-lg text-gray-700">
-          This is some dummy text to fill in the blank on the main page.
-        </p>
+      <div className="p-8 bg-[#f8f8f8]">
+        <button onClick={() => navigate('/NisitKU/CalendarKU')}>
+          <img
+          src={Calendar}
+          className='h-40 w-40 sm:h-20 sm:w-20'/>
+        </button>
+        <button onClick={() => navigate('/NisitKU/Newtranscript')}>
+          <img
+          src={TranScript}
+          className='h-40 w-40 sm:h-20 sm:w-20'/>
+        </button>
+        
       </div>
 
       {/* Topic Selection Menu */}
