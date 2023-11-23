@@ -9,10 +9,6 @@ function ContinuousCalendar() {
 	const [selectedDate, setSelectedDate] = useState(null);
     const [isload,setisload] = useState(false);
 	const [events, setEvents] = useState([
-		{ date: '2023-11-15', title: 'Event 1', Faculty: 'Engineer' },
-		{ date: '2023-11-15', title: 'Event 2', Faculty: 'Economy' },
-		{ date: '2023-11-16', title: 'Event 3', Faculty: 'Sci' },
-		// Add more events as needed
 	]);
     const fetchevent = async() => {
         const response = await fetch(`http://127.0.0.1:8000/calendar/`);
@@ -29,19 +25,66 @@ function ContinuousCalendar() {
 	// const [showFilterActi, setshowFilterActi] = useState(false);
 	// const [showFilterCampus, setshowFilterCampus] = useState(false);
 	//const Faculty = ["Sci", "Engineer", "Econ"];
-	const [Faculty, setFaculty] = useState(["Sci", "Engineer", "Econ",'a', 'b', 'c', 'd', 'e']);
-	const [Acti, setActi] = useState(["สังคม", "มหาลัย"]);
+	const [Faculty, setFaculty] = useState(["KUTech", "KUStartUP", "KU",'Engineer', 'b', 'c', 'd', 'e']);
+	const [Acti, setActi] = useState(["กิจกรรมเพิ่อเสริมสร้างสมรรถนะ", "กิจกรรมมหาวิทยาลัย","กิจกรรมเพื่อสังคม"]);
 	const [Campus, setCampus] = useState(["บางเขน", "กำแพงแสน"]);
+    const [filFac,setfilFac] = useState(["Select..."]);
+    const [filActi,setfilActi] = useState(["Select..."]);
+    const [filCampus,setfilCampus] = useState(["Select..."]);
 
+    const checkhighlightFac = (event) => {
+        if (filFac.length == 1 && filFac[0] === "Select..."){
+            return true;
+        }
+        return event.some((event) => event.host.some((host) => filFac.includes(host)));
+        // return false;
+    }
+    const checkhighlightActi = (event) => {
+        if (filActi.length == 1 && filActi[0] === "Select..."){
+            return true;
+        }
+        // console.log(event.some((event) => event.activitytype.some((host) => filActi.includes(host))));
+        return event.some((event) => event.activitytype.some((host) => filActi.includes(host)));
+        // return false;
+    }
+    const checkhighlightCampus = (event) => {
+        if (filCampus.length == 1 && filCampus[0] === "Select..."){
+            return true;
+        }
+        // console.log(event.some((event) => event.activitytype.some((host) => filActi.includes(host))));
+        return event.some((event) => filCampus.includes(event.campus));
+        // return false;
+    }
+    const checkeventacti = (event) => {
+        if (filActi.length == 1 && filActi[0] === "Select..."){
+            return true;
+        }
+        return filActi.some(e => event.activitytype.includes(e));
+    }
+    const checkeventhost = (event) => {
+        if (filFac.length == 1 && filFac[0] === "Select..."){
+            return true;
+        }
+        return filFac.some(e => event.host.includes(e));
+    }
+    const checkeventcampus = (event) => {
+        if (filCampus.length == 1 && filCampus[0] === "Select..."){
+            return true;
+        }
+        return filCampus.includes(event.campus);
+    }
 	const handleDateChange = (date) => {
 		setSelectedDate(date);
 	};
     const tileContent = ({ date, view }) => {
         const eventDates = events
           .flatMap((event) => event.date.map((date) => moment(date).toDate()));
-      
-        if (view === 'month' && eventDates.some((eventDate) => moment(eventDate).isSame(date, 'day'))) {
-          return 'highlight';
+        
+        const eventsOnDate = events.filter((event) =>
+          event.date.some((eventDate) => moment(eventDate).isSame(date, 'day'))
+        );
+        if (view === 'month' && eventDates.some((eventDate) => moment(eventDate).isSame(date, 'day')) && checkhighlightFac(eventsOnDate) && checkhighlightActi(eventsOnDate) && checkhighlightCampus(eventsOnDate)) {
+            return 'highlight';
         }
       
         return null;
@@ -76,19 +119,19 @@ function ContinuousCalendar() {
 							<div className='w-[400px] sm:w-[250px] h-[140px] flex flex-col justify-center items-center'>
 								{/* <div className='w-12 h-12 bg-yellow-500 rounded-full hover:bg-yellow-900 hover:duration-500 duration-500 cursor-pointer'  ></div> */}
 								<h1>วิทยาเขต</h1>
-								<Filling list={Campus} color="bg-yellow-100" />
+								<Filling list={Campus} color="bg-yellow-100" ans={filCampus} setAns={setfilCampus}/>
 								<h1></h1>
 							</div>
 							<div className='w-[400px] sm:w-[250px] h-[140px] flex flex-col justify-center items-center'>
 								{/* <div className='w-12 h-12 bg-pink-500 rounded-full hover:bg-pink-900 hover:duration-500 duration-500 cursor-pointer'  onClick={() => { setshowFilterActi(true) }}></div> */}
 								<h1>กิจกรรม</h1>
-								<Filling list={Acti} color="bg-pink-100" />
+								<Filling list={Acti} color="bg-pink-100" ans = {filActi} setAns={setfilActi}/>
 								<h1></h1>
 							</div>
 							<div className='w-[400px] sm:w-[250px] h-[140px] flex flex-col justify-center items-center'>
 								{/* <div className='w-12 h-12 bg-green-500 rounded-full hover:bg-green-900 hover:duration-500 duration-500 cursor-pointer' onClick={() => { setshowFilterFac(true) }}></div> */}
 								<h1>ชมรม/คณะ</h1>
-								<Filling list={Faculty} color="bg-green-100" />
+								<Filling list={Faculty} color="bg-green-100" ans={filFac} setAns={setfilFac}/>
 								<h1></h1>
 							</div>
 						</div>
@@ -129,9 +172,9 @@ function ContinuousCalendar() {
 
 
 	return (
-		<div className='font-kanit'>
+		<div className='font-kanit w-screen h-screen overflow-hidden'>
 			<div className='w-screen flex sm:flex-col '>
-				<div className='justify-center sm:w-full w-1/2'>
+				<div className='justify-center sm:w-full w-1/2 sm:h-1/2'>
 					<div>
 						{isload && 
 							<div className='border p-10'>
@@ -159,26 +202,31 @@ function ContinuousCalendar() {
 					</div>	
 				</div>
 				{/* <div className='w-screen flex sm:flex-col sm:justify-normal justify-evenly h-screen'> */}
-				<div className='flex sm:flex-col h-max overflow-auto p-10 '>
+				<div className='flex sm:flex-col max-h-screen sm:w-screen '>
 						
-					<div className='flex-item'>
+					<div className='max-h-full sm:max-h-1/2 sm:w-screen'>
 						{selectedDate && (
-							<div>
+							<div className=''>
 								<h3>Events for {moment(selectedDate).format('MMMM DD, YYYY')}</h3>
 								{filteredEvents.length > 0 ? (
-									<ul>
-										{filteredEvents.map((event, index) => (
-											<li key={index}>
-                                                <a href= {event.detail} className='w-[300px] h-[300px] bg-slate-200 block mb-[10px]'>
-                                                <img src={event.image} className='w-[300px] h-[200px] object-cover' alt="" />
-                                                <p>{event.name}</p> 
-                                                <p>From {event.host.join(', ')}</p>
-                                                <p>Activity Type : {event.activitytype.join(',')}</p>
-                                                <p>Hour : {event.hour}</p>
-                                                </a>
-                                                </li>
-										))}
-									</ul>
+                                    <div className=' sm:w-screen flex overflow-auto '>
+                                        <ul className='w-screen sm:flex'> 
+                                            {filteredEvents.map((event, index) => (
+                                                (checkeventacti(event) && checkeventcampus(event) && checkeventhost(event) &&
+                                                <li key={index} className='m-3'>
+                                                    <a href= {event.detail} className='w-[300px] h-[340px] bg-slate-200 block mb-[10px]'>
+                                                    <img src={event.image} className='w-[300px] h-[200px] object-cover' alt="" />
+                                                    <p>{event.name}</p> 
+                                                    <p>From {event.host.join(', ')}</p>
+                                                    <p>Activity Type : {event.activitytype.join(',')}</p>
+                                                    <p>Hour : {event.hour}</p>
+                                                    <p>campus : {event.campus}</p>
+                                                    </a>
+                                                    </li>
+                                                )
+                                            ))}
+                                        </ul>
+                                    </div>
 								) : (
 									<p>No events for this date.</p>
 								)}
