@@ -17,7 +17,7 @@
 <img src=""/>
 <p>คำอธิบาย Feature : ปฎิทินกิจกรรมที่สามารถเพิ่มกิจกรรมจากหัวหน้าของหน่วยงานที่ต้องการจัดกิจกรรมได้ และมีฟิลเตอร์ที่ช่วยในการกรองเฉพาะกิจกรรมที่สนใจได้ หน้า Activity Transcript ใหม่ที่ช่วยสรุปข้อมูลที่นิสิตต้องการได้ในหน้าเดียว</p>
 
-<p>Figma Design : https://www.figma.com/file/RDAfmZBO5MBqWpOdeKY2fo/Design?type=design&node-id=0-1&mode=design&t=xQrlMBO1pSSGsoy5-0</p>
+<p>Figma Design : https://www.figma.com/file/PEKIGVj0XvfGRTeA7duFvA/Design-(Copy)?type=design&node-id=0-1&mode=design&t=iHTrcL42b2KwLUYm-0</p>
 
 คำสั่ง git พื้นฐานในการอัปโหลดโค้ดขึ้นมาที่ repository นี้
 
