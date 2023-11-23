@@ -14,7 +14,12 @@
 <p>3.ภูวนัตถ์ เนียมหลวง</p>
 <p>4.พัทธดนย์ ตันติเอมอร</p>
 <p>5.ธนภรณ์ กิจวรเกียรติ</p>
-<img src=""/>
+<img src="./src/picture/calendar-1-m.png"/>
+<img src="./src/picture/calendar-1-pc.png"/>
+<img src="./src/picture/filter-1-m.png"/>
+<img src="./src/picture/filter-1-pc.png"/>
+<img src="./src/picture/trans-checked-e-pc.png"/>
+<img src="./src/picture/trans-checked-m.png"/>
 <p>คำอธิบาย Feature : ปฎิทินกิจกรรมที่สามารถเพิ่มกิจกรรมจากหัวหน้าของหน่วยงานที่ต้องการจัดกิจกรรมได้ และมีฟิลเตอร์ที่ช่วยในการกรองเฉพาะกิจกรรมที่สนใจได้ หน้า Activity Transcript ใหม่ที่ช่วยสรุปข้อมูลที่นิสิตต้องการได้ในหน้าเดียว</p>
 
 <p>Figma Design : https://www.figma.com/file/PEKIGVj0XvfGRTeA7duFvA/Design-(Copy)?type=design&node-id=0-1&mode=design&t=iHTrcL42b2KwLUYm-0</p>
@@ -26,4 +31,10 @@
 git add .
 git commit -m "<commit_message>"
 git push -u origin main
+```
+คำสั่ง run 
+```bash
+npm install
+cd server
+pip install -r requirement.txt
 ```
