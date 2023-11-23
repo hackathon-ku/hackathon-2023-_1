@@ -2,6 +2,7 @@
 import React, { useState } from 'react';
 import TopicSelectionMenu from '../components/TopicSelectionMenu';
 import Profile from '../picture/ProfileHolder.jpg'
+import Menu from '../picture/Menu.jpg'
 
 const Homepage = () => {
   const [isMenuOpen, setMenuOpen] = useState(false);
@@ -13,23 +14,13 @@ const Homepage = () => {
   return (
     <div className="bg-white min-h-screen relative">
       {/* Navbar */}
-      <nav className="bg-primary p-4 text-white">
+      <nav className="bg-[#07665e] p-4 text-white">
         <div className="flex justify-between items-center">
           <div className="mr-4 cursor-pointer" onClick={handleMenuToggle}>
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke="currentColor"
-              className="h-6 w-6"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth="2"
-                d="M4 6h16M4 12h16m-7 6h7"
-              />
-            </svg>
+            <img 
+            src={Menu}
+            className='h-8 w-auto'
+            />
           </div>
           <div className="flex items-center">
             {/* User details */}
@@ -39,7 +30,7 @@ const Homepage = () => {
               alt="User Avatar"
               className="rounded-full h-8 w-8 mr-2"
             />
-            <span className="text-sm">Aoun Stang</span>
+            <span className="text-sm">Thanaporn Kitworakiat</span>
           </div>
         </div>
       </nav>

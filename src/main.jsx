@@ -7,6 +7,6 @@ import Newtranscript from './pages/newtranscript.jsx'
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
-    <CalendarKU />
+    <App />
   </React.StrictMode>,
 )
