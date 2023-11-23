@@ -6,20 +6,29 @@
 
 
 .react-calendar {
-	width: 18rem;
-	max-width: 100%;
+	width: 500px;
+	
+	/* max-width: 100%; */
 	background-color: #ffffff;
 	color: #2d3748;
 	border-radius: 1rem;
 	box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 	font-family: 'Arial', 'Helvetica', sans-serif, 'Kanit';
-	line-height: 1.5;
-	transform: scale(2)
+	line-height: 2.5rem;
+	font-size: 1.5rem;
+	/* transform: scale(2); */
+	/* border: solid black; */
   }
-  @media only screen and (max-width:768px) {
+
+  @media only screen and (max-width:767px) {
     .react-calendar{
-        transform: scale(1.2);
+		line-height: 1.5rem;
+		font-size: 1rem;
+        /* transform: scale(1.2); */
     }
+	.react-calendar__navigation button {
+		font-size: 2rem;
+	}
 }
   
   
@@ -27,7 +36,7 @@
 	color: #4a5568;
 	min-width: 2.75rem;
 	background: transparent;
-	font-size: 1rem;
+	font-size: large;
 	margin-top: 0.5rem;
 	transition: color 0.3s ease-in-out;
   }
