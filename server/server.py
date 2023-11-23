@@ -9,12 +9,13 @@ from fastapi.responses import JSONResponse
 
 class Event(BaseModel):
     name: str
-    dates: List[str]
-    hosts: List[str]
+    date: List[str]
+    host: List[str]
     activitytype: List[str]
     hour: str
     image: str
     detail :str
+    campus :str
 
 class CustomJSONEncoder(json.JSONEncoder):
     def default(self, o):
